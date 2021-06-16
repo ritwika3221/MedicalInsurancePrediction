@@ -1,0 +1,41 @@
+{% load static %}
+{% block body %}
+
+{% include "navigation.html" %}
+
+<div class="container">
+  <h2 class="text-center" style="font-family:georgia,garamond,serif;font-size:30px;font-style:italic;color:white"><u>DATA TABLE</u></h2><br>            
+  <table class="table table-dark table-striped" id='myTable'>
+    <thead>
+      <tr>
+        <th>Age</th>
+        <th>Sex</th>
+        <th>BMI</th>
+        <th>Children</th>
+        <th>Smoker</th>
+        <th>Region</th>
+        <th>Charges</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% if d %}  
+    {% for i in d %}
+      <tr>
+        <td>{{i.age}}</td>
+        <td>{{i.sex}}</td>
+        <td>{{i.bmi}}</td>
+        <td>{{i.children}}</td>
+        <td>{{i.smoker}}</td>
+        <td>{{i.region}}</td>
+        <td>{{i.charges}}</td>
+        
+      </tr>
+    {% endfor %}
+    {% endif %}
+    </tbody>
+  </table>
+</div>
+  
+
+{% endblock body %}
+{% include 'footer.html' %}

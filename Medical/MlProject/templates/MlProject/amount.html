@@ -1,0 +1,127 @@
+{% load static %}
+<style>
+.card{
+  width: 400px;
+  height: 340px;
+  background: #fff;
+  border-top-right-radius: 7px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 14px 26px rgba(0,0,0,0.04);
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.005) 
+  translateZ(0);
+  box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+    0 24px 46px rgba(255, 215, 97, 0.48);
+}
+</style>
+{% block body %}
+
+{% include "navigation.html" %}
+
+<div class="container-fluid loan mt-5">
+    <div class="container text-light my-5">
+        <div class="py-5">
+            <h1 class="display-4 fstyle text-center" style="background:black;"><b>INSURANCE AMOUNT PREDICTION</b></h1>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid text-white bg-secondary">
+    <div class="container text-center mt-4">
+    <h1 class="alert alert-success shadow-lg fstyle" >Predicted Amount :{{best_amount}}</h1>
+        <div class="shadow-lg p-4 mb-5 rounded border bg">
+            <h1 class="text-center alert alert-secondary fstyle" style="font-size:4vw"><b>Your Details</b></h1>
+            <table class="table table-hover text-white text-center">
+                <tbody>
+                    <tr>
+                        <th scope="row">Age</th>
+                        <td><b>{{age}}</b></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gender</th>
+                        <td><b>{{sex|upper}}</b></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">BMI</th>
+                        <td><b>{{bmi}}</b></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">CHILDREN</th>
+                        <td><b>{{children}}</b></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">SMOKER</th>
+                        <td><b>{{smoker|upper}}</b></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">REGION</th>
+                        <td><b>{{region|upper}}</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container-fluid text-white bg-secondary" >
+    <div class="container text-center mt-4" >
+    {% comment %} <h1 class="alert alert-success shadow-lg fstyle" >Predicted Amount :{{q}}</h1> {% endcomment %}
+        <div class="shadow-lg p-4 mb-5 rounded border bg" >
+            <h1 class="text-center alert alert-secondary fstyle" style="font-size:4vw"><b>Predicted Amounts & Scores Using Different Algorithms</b></h1>
+            <table class="table table-hover text-white text-center">
+                <tbody>
+                    <tr>
+                        <th scope="row">Linear Regression Score::</th>
+                        <td><b>{{lr_score}}</b></td>
+                        <th scope="row">Linear Regression Amount::</th>
+                        <td><b>{{lr_amount}}</b></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Random Forest Regressor Score::</th>
+                        <td><b>{{rfr_score}}</b></td>
+                        <th scope="row">Random Forest Regressor Amount::</th>
+                        <td><b>{{rfr_amount}}</b></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">K-Nearest Neighbor Score::</th>
+                        <td><b>{{knn_score}}</b></td>
+                        <th scope="row">K-Nearest Neighbor  Amount::</th>
+                        <td><b>{{knn_amount}}</b></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ridge Regression Score::</th>
+                        <td><b>{{ridge_score}}</b></td>
+                        <th scope="row">Ridge Regression Amount::</th>
+                        <td><b>{{ridge_amount}}</b></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Lasso Score::</th>
+                        <td><b>{{ls_score}}</b></td>
+                        <th scope="row">Lasso Amount::</th>
+                        <td><b>{{ls_amount}}</b></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Best Score::</th>
+                        <td><b>{{best_score}}</b></td>
+                        <th scope="row">Best Predicted Amount::</th>
+                        <td><b>{{best_amount}}</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container" style="display:flex;justify-content:center;">
+    <div class="card" style='margin-right:25px'>
+          {{q|safe}}
+    </div>
+</div>
+{% endblock body %}

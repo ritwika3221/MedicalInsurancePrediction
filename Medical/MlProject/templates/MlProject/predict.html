@@ -1,0 +1,109 @@
+{% load static %}
+
+{% block body %}
+
+{% include "navigation.html" %}
+
+<marquee style="font-size:25px;color:grey;background-color:black; font-weight:bold; margin-top:1px">
+    ||PREDICT YOUR INSURANCE AMOUNT||
+</marquee>
+{% comment %} {% if messages %}
+
+{% for mes in messages %}
+<p {% if mes.tags %} class="alert alert-{{mes.tags}}" {% endif %}>{{mes}}</p>
+{% endfor %}
+{% endif %} {% endcomment %}
+<form method="post" class="container mt-5" action="{% url 'amountpage' %}">
+{% csrf_token %}
+    <div class="row">
+        <div class="input-field col s4 text-white">
+            <label for="first_name" style="font-size: 20px"><b>Age</b></label>
+            <br>
+            <input placeholder="Age" name="age" id="age" type="number" class="validate">
+        </div>
+
+        <div class="input-field col s4 text-white">
+            <label for="_name" style="font-size: 20px"><b>Sex</b></label>
+            <br>
+            <select id="sex" name="sex">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s4 text-white">
+            <label for="last_name" style="font-size: 20px"><b>BMI</b></label>
+              <br>
+            <input id="bmi" name="bmi" placeholder="BMI"  type="number" step="0.1" class="validate">
+          </div>
+
+        <div class="input-field col s4 text-white">
+
+            <label for="last_name" style="font-size: 20px"><b>Childrens</b></label>
+              <br>
+            <input id="children" name="children" placeholder="0 for None"  type="number" class="validate">
+  
+          </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s4 text-white">
+            <label for="smoker" style="font-size: 20px"><b>Do you Smoke?</b></label>
+            <br>
+            <select id="smoker" name="smoker">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            </select>
+        </div>
+
+        <div class="input-field col s4 text-white">
+            <label for="region" style="font-size: 20px"><b>Which Region?</b></label>
+            <br>
+            <select id="region" name="region">
+            <option value="northwest">North West</option>
+            <option value="northeast">North East</option>
+            <option value="southeast">South East</option>
+            <option value="southwest">South West</option>
+            </select>
+        </div>
+    </div>
+
+        <div class="row center">
+            <input type="submit" value="Predict" class="btn btn-success" style="margin-top:6px; ">
+        </div>
+
+
+
+</form>
+{% comment %} 
+<form method="POST"> 
+    {% csrf_token %}
+    <div class="row text-center">
+        <div class="input-field col s4" style="margin-top:12px;">
+            <select name="country" id="country"></select> <br>
+        </div>
+        <div class="input-field col s4" style="margin-top:12px;">
+            <select name="state" id="state"></select> <br>
+        </div>
+        <div class="input-field col s4" style="margin-top:12px;">
+            <select name="city" id="city"></select><br>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="input-field col s4" style="margin-top:12px;">
+            <select name="select_crops" id="select_crops"></select> <br>
+        </div>
+        <div class="input-field col s4" style="margin-top:12px;">    
+            <select name="category" id="category"></select> <br>
+        </div>
+        <div class="input-field col s4" style="margin-top:12px;">
+            <select name="crops" id="crops"></select>
+        </div>
+    </div>
+        <div class="row center" >
+            <input type="submit" value="Submit" class="btn btn-success" style="margin-top:12px;">
+        </div>
+    
+</form> {% endcomment %}
+
+{% endblock body %}

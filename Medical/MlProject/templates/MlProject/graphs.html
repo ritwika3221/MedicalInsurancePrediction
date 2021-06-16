@@ -1,0 +1,84 @@
+
+{% load static %}
+{% comment %} <link rel="stylesheet" type="text/css" href="{% static 'MlProject/graphstyle.css' %}"> {% endcomment %}
+<style>
+.card{
+  width: 400px;
+  height: 340px;
+  background: #fff;
+  border-top-right-radius: 7px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 14px 26px rgba(0,0,0,0.04);
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.005) 
+  translateZ(0);
+  box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+    0 24px 46px rgba(255, 215, 97, 0.48);
+}
+#two:hover{
+  transform: translateY(-5px) scale(1.005) 
+  translateZ(0);
+  box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+    0 24px 46px rgba(206, 178, 252, 0.48);
+}
+#three:hover{
+  transform: translateY(-5px) scale(1.005) 
+  translateZ(0);
+  box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+    0 24px 46px rgba(220, 233, 255, 0.48);
+}
+
+</style>
+{% include "navigation.html" %}
+{% block body %}
+
+<form method="POST" action="{% url 'graphpage' %}" >
+{% csrf_token %}
+  <div class="container my-4 center" style="display: flex; width:150px; height:50px; border-radius:50%;">
+      <select name='drop1' id="drop1" class="mdb-select md-form" searchable="Search here..">
+      <option value="" disabled selected>Choose your graph</option>
+      <option value="1">HISTOGRAM</option>
+      <option value="2">SCATTER PLOTTING</option>      
+      <option value="3">BARGRAPH</option>
+      <option value="4">CORRELATION</option>
+      </select>
+      <input type="submit" value='submit'>
+      
+  </div>
+</form>
+
+<div class="container" style="display:flex;justify-content:center;">
+{% if p %}
+
+<div class="card" style='margin-right:25px'>
+      {{p|safe}}
+</div>
+{% endif %}
+{% if q %}
+<div class="card" style='margin-right:25px' id="two">
+    
+      {{q|safe}}
+      
+</div>
+{% endif %}
+{% if r %}
+<div class="card" style='margin-right:25px' id="three">
+      {{r|safe}}
+</div>
+{% endif %}
+</div>
+<script>
+    $(document).ready(function() {
+    $('.mdb-select').materialSelect();
+    });
+</script>
+{% endblock body %}

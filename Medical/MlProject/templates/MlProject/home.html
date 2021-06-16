@@ -1,0 +1,55 @@
+{% load static %}
+{% include "navigation.html" %}
+{% block body %}
+
+<div class="container-fluid bg-secondary">
+    <div class="row my-4 text-center">
+        <div class="col-4">
+            <img class="border rounded img-fluid shadow-lg" src="{% static 'MlProject/img/home.jpg' %}" alt="loan" style="height:300px">
+        </div>
+        <div class="col-4">
+            <img class="border rounded img-fluid shadow-lg" src="{% static 'MlProject/img/home2.jpg' %}" alt="loan" style="height:300px">
+        </div>
+        <div class="col-4">
+            <img class="border rounded img-fluid shadow-lg" src="{% static 'MlProject/img/home3.jpg' %}" alt="loan" style="height:300px">
+        </div>
+    </div>
+    <div class="jumbotron mx-3 px-4 my-4 border rounded shadow-lg cfstyle" style="background-color: #75706B;">
+        <h1 style="text-shadow: 2px 2px black;" class="text-light"><i class="fas fa-hand-point-right"></i> Difficult time eh?</h1>
+        <h1 style="text-shadow: 2px 2px black;" class="text-light"><i class="fas fa-hand-point-right"></i> Finding difficulties what is your Insurance Amount?</h1>
+        <h4 class="pl-2 text-light">A one step solution for all your needs. <b style="text-shadow: 1px 1px black;">THE PREDICTOR</b> is a tool that can solve all your queries in a minute.</h4>
+        <h4>The goal of this project is to allows a person to get an idea about the necessary amount required according to their own health status.</h4>
+        <h4 class="pl-2 text-light">Abstract In this thesis, we analyse the personal health data to predict insurance amount for individuals.</h4>
+        <h4 class="pl-2 text-light">Dataset was used for training the models and that training helped to come up with some predictions. Then the predicted amount was compared with the actual data to test and verify the model.</h4>
+        <h4 class="pl-2 text-light">This can help not only people but also insurance companies to work in tandem for better and more health centric insurance amount.</h4>
+    </div>
+</div>
+<div class="container-fluid about ">
+    <div class="container text-light py-2 ">
+        <div class="py-5 center">
+            <h1 class="display-4 fstyle" style="margin-left:435px"><b>About Myself</b></h1>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-4 bg-secondary ">
+    <div class="row px-4">
+        <div class="card-deck text-center">
+            <div class="card shadow-lg">
+                <img class="card-img-top border " style="height:250px ; width:200px; margin-left:545px"src="{% static 'MlProject/img/myphoto.jpg' %}" alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-title">Ritwika Ghosh</h3>
+                    <h4 class="text-danger">Creating Machine Learning Model</h4>
+                    <h4 class="text-danger">College:Asansol Engineering College</h4>
+                    <h4 class="text-danger">Degree:Bachelor Of Technology</h4>
+                    <h4 class="text-danger">Department:Information Technology</h4>
+                    <div class="card-text">
+                        
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+{% include 'footer.html' %}
