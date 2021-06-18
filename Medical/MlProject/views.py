@@ -4,7 +4,7 @@ import pandas as pd
 from .jupy import Data
 # Create your views here.
 def FrontPage(request):
-    return render(request,'MlPreoject/home.html')
+    return render(request,'MlProject/home.html')
 def GraphPage(request):
     if request.method == "POST":
         a = request.POST['drop1']
@@ -32,9 +32,9 @@ def GraphPage(request):
             c=Data()
             pp=c.corro()
             h={'q':pp}
-        return render(request,'MlPreoject/graphs.html',h)
+        return render(request,'MlProject/graphs.html',h)
     else:        
-        return render(request,'MlPreoject/graphs.html')
+        return render(request,'MlProject/graphs.html')
 def PredictPage(request):       
     if request.method == "POST":
         age = request.POST['age']
