@@ -4,7 +4,7 @@ import pandas as pd
 from .jupy import Data
 # Create your views here.
 def FrontPage(request):
-    return render(request,'home.html')
+    return render(request,'MlPreoject/home.html')
 def GraphPage(request):
     if request.method == "POST":
         a = request.POST['drop1']
@@ -32,9 +32,9 @@ def GraphPage(request):
             c=Data()
             pp=c.corro()
             h={'q':pp}
-        return render(request,'graphs.html',h)
+        return render(request,'MlPreoject/graphs.html',h)
     else:        
-        return render(request,'graphs.html')
+        return render(request,'MlPreoject/graphs.html')
 def PredictPage(request):       
     if request.method == "POST":
         age = request.POST['age']
@@ -72,9 +72,9 @@ def PredictPage(request):
         pq=c.pie(lr_score,rfr_score,knn_score,ridge_score,ls_score)
 
         h={"q":pq,"lr_score":lr_score,"lr_amount":lr_amount,"rfr_score":rfr_score,"rfr_amount":rfr_amount,"knn_score":knn_score,"knn_amount":knn_amount,"ridge_score":ridge_score,"ridge_amount":ridge_amount,"ls_score":ls_score,"ls_amount":ls_amount,"best_score":best_score,"best_amount":best_amount,"age":age,"sex":sex,"bmi":bmi,"children":children,"smoker":smoker,"region":region}
-        return render(request,'amount.html',h)
+        return render(request,'MlProject/amount.html',h)
     else:
-        return render(request,'predict.html')
+        return render(request,'MlProject/predict.html')
 def DataPage(request):
     df = pd.read_csv("insurance.csv")
     df1=df.head(50)
@@ -83,6 +83,6 @@ def DataPage(request):
     data = []
     data = json.loads(json_records)
     p = {'d': data}
-    return render(request,'data.html',p)
+    return render(request,'MlProject/data.html',p)
 def ContactPage(request):
-    return render(request,'contact.html')
+    return render(request,'MlProject/contact.html')
